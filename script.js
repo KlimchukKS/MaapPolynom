@@ -59,12 +59,14 @@ document.getElementById('sendData').addEventListener('click', () => {
         return;
     }
 
-    if (window.Telegram?.WebApp) {
+    let tg = window.Telegram.WebApp;
+    
+    if (tg) {
         try {
             // Проверка данных перед отправкой
             console.log("Отправляемые данные:", JSON.stringify(polygons));
-            Telegram.WebApp.sendData(JSON.stringify(polygons));
-            Telegram.WebApp.close();
+            tg.sendData(JSON.stringify(polygons));
+            tg.close();
         } catch (e) {
             console.error("Ошибка отправки данных:", e);
             alert("Ошибка отправки: " + e.message);
