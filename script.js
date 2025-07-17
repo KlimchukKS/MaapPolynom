@@ -6,7 +6,7 @@ function initMap() {
     map = L.map('map').setView([50.443158, 30.465269], 6);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        attribution: ''
     }).addTo(map);
 
     map.addLayer(drawnItems);
