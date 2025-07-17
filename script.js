@@ -19,6 +19,7 @@ function initMap() {
                 shapeOptions: { color: '#3388ff', fillOpacity: 0.5 }
             },
             rectangle: false,
+            circlemarker: false,
             circle: false,
             marker: false,
             polyline: false
