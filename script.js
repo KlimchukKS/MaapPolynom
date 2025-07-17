@@ -43,22 +43,35 @@ document.getElementById('sendData').addEventListener('click', () => {
     const polygons = [];
     drawnItems.eachLayer((layer) => {
         if (layer instanceof L.Polygon) {
-            polygons.push(layer.getLatLngs()[0].map(point => [point.lat, point.lng]));
+            // Проверяем, что полигон имеет минимум 3 точки
+            const latLngs = layer.getLatLngs()[0];
+            if (latLngs.length >= 3) {
+                polygons.push(latLngs.map(point => [
+                    parseFloat(point.lat.toFixed(6)), 
+                    parseFloat(point.lng.toFixed(6))
+                ]));
+            }
         }
     });
 
     if (polygons.length === 0) {
-        alert("Сначала нарисуйте полигон!");
+        alert("Нет полигонов для отправки!");
         return;
     }
 
     if (window.Telegram?.WebApp) {
-        alert("Начинаю отправлять данные");
-        Telegram.WebApp.sendData(JSON.stringify(polygons));
-        Telegram.WebApp.close();
+        try {
+            // Проверка данных перед отправкой
+            console.log("Отправляемые данные:", JSON.stringify(polygons));
+            Telegram.WebApp.sendData(JSON.stringify(polygons));
+            Telegram.WebApp.close();
+        } catch (e) {
+            console.error("Ошибка отправки данных:", e);
+            alert("Ошибка отправки: " + e.message);
+        }
     } else {
-        alert("Откройте в Telegram для отправки!");
+        console.log("Данные для отправки:", polygons);
+        alert("Открыто вне Telegram!";
     }
 });
-
 initMap();
