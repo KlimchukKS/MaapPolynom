@@ -71,7 +71,7 @@ document.getElementById('sendData').addEventListener('click', () => {
         }
     } else {
         console.log("Данные для отправки:", polygons);
-        alert("Открыто вне Telegram!";
+        alert("Открыто вне Telegram!");
     }
 });
 initMap();
