@@ -3,7 +3,7 @@ let drawnItems = new L.FeatureGroup();
 let drawControl;
 
 function initMap() {
-    map = L.map('map', attributionControl: false).setView([50.443158, 30.465269], 6);
+    map = L.map('map', {attributionControl: false}).setView([50.443158, 30.465269], 6);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: ''
