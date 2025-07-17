@@ -53,6 +53,7 @@ document.getElementById('sendData').addEventListener('click', () => {
     }
 
     if (window.Telegram?.WebApp) {
+        alert("Начинаю отправлять данные");
         Telegram.WebApp.sendData(JSON.stringify(polygons));
         Telegram.WebApp.close();
     } else {
